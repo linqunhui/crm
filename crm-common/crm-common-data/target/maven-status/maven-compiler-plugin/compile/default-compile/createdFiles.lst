@@ -1,0 +1,13 @@
+com\kaimenshenghuo\crm\common\data\mapper\UserRoleMapper.class
+com\kaimenshenghuo\crm\common\data\config\MyBatisPlusConfig.class
+com\kaimenshenghuo\crm\common\data\mapper\RolePermissionMapper.class
+com\kaimenshenghuo\crm\common\data\domain\RolePermission.class
+com\kaimenshenghuo\crm\common\data\domain\UserRole.class
+com\kaimenshenghuo\crm\common\data\domain\User.class
+com\kaimenshenghuo\crm\common\data\mapper\UserMapper.class
+com\kaimenshenghuo\crm\common\data\domain\Syslog.class
+com\kaimenshenghuo\crm\common\data\domain\Permission.class
+com\kaimenshenghuo\crm\common\data\mapper\RoleMapper.class
+com\kaimenshenghuo\crm\common\data\mapper\SyslogMapper.class
+com\kaimenshenghuo\crm\common\data\domain\Role.class
+com\kaimenshenghuo\crm\common\data\mapper\PermissionMapper.class
