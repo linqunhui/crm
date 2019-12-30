@@ -14,6 +14,7 @@ public class CrmController {
 	
 	@RequestMapping("/hello")
 	public void getBalance() {
+		System.out.println("hello");
 		System.out.println("request:sleep: " + sleep);
 	}
 	
