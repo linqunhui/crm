@@ -5,7 +5,6 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -16,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -29,7 +29,6 @@ import com.kaimenshenghuo.crm.security.handler.RestAccessDeniedHandler;
 * Security 配置 
 * @author linqunhui 
 */  
-@Configuration  
 @EnableWebSecurity  
 @EnableGlobalMethodSecurity(prePostEnabled = true) 
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -50,22 +49,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	* @return 
 	*/  
 	@Bean("UserAuthenticationProvider")  
-	DaoAuthenticationProvider daoUserAuthenticationProvider(){  
+	public DaoAuthenticationProvider daoUserAuthenticationProvider(){  
 		return new UserAuthenticationProvider(encoder(), userDetailsService);  
 	}
 	
 	/** 
 	* 向AuthenticationManager添加Provider 
 	* @return 
+	 * @throws Exception 
 	*/  
 	@Autowired  
-	public void configureGlobal(AuthenticationManagerBuilder auth){  
-		auth.authenticationProvider(daoUserAuthenticationProvider());  
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+//		auth.userDetailsService(this.userDetailsService).passwordEncoder(encoder());
+		auth.authenticationProvider(daoUserAuthenticationProvider());
 	}
 	
 	@Autowired  
 	public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {  
-		authenticationManagerBuilder.userDetailsService(this.userDetailsService).passwordEncoder(encoder());  
+		authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(encoder());  
 	}
 	/** 
 	* 注入AuthenticationManager 
@@ -93,8 +94,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override  
 	protected void configure(HttpSecurity http) throws Exception {  
 		http.  
-		csrf().disable().//默认开启，这里先显式关闭csrf  
-		sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) //Spring Security永远不会创建HttpSession，它不会使用HttpSession来获取SecurityContext  
+		csrf().disable()//默认开启，这里先显式关闭csrf  
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) //Spring Security永远不会创建HttpSession，它不会使用HttpSession来获取SecurityContext  
 		.and()  
 		.authorizeRequests()  
 		.antMatchers(HttpMethod.OPTIONS, "/**").permitAll() //任何用户任意方法可以访问/**
@@ -107,11 +108,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/configuration/ui").permitAll()
         .antMatchers("/configuration/security").permitAll()
         // swagger end
-		.antMatchers("/user/login").permitAll() //任何用户可以访问/user/**  
+		.antMatchers("/user/**").permitAll() //任何用户可以访问/user/**
 		.anyRequest().authenticated() //任何没有匹配上的其他的url请求，只需要用户被验证  
-		.and()  
+		.and()
 		.headers().cacheControl();  
 		http.addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);  
 		http.exceptionHandling().authenticationEntryPoint(entryPointUnauthorizedHandler).accessDeniedHandler(restAccessDeniedHandler);  
+	}
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.inMemoryAuthentication().withUser("linqunhui").password(encoder().encode("password1")).roles("ADMIN");
+		auth.inMemoryAuthentication().passwordEncoder(encoder()).withUser("linqunhui").password(encoder().encode("password1")).roles("USER");
 	}
 }

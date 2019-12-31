@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: crm-upm
+  security: 
+    user: 
+      name: linqunhui
+      password: 123456
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     # 使用druid连接池
