@@ -15,6 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
  * @Description: swagger2配置类
  */
 @Configuration
+@EnableSwagger2WebFlux
 public class Swagger2 {
 	
 	@Bean

@@ -3,10 +3,8 @@ package com.kaimenshenghuo.crm.common.data.domain;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import lombok.Data;
