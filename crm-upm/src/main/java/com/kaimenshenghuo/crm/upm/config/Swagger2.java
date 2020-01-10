@@ -22,8 +22,8 @@ public class Swagger2 {
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(new ApiInfoBuilder()
-                        .description("example api")
-                        .title("example api")
+                        .description("新项目搭建")
+                        .title("新项目搭建")
                         .version("1.0.0")
                         .build())
                 .select()

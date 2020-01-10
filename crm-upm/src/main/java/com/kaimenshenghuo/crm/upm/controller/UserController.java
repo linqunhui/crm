@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaimenshenghuo.crm.common.data.domain.User;
-import com.kaimenshenghuo.crm.common.log.aspect.MyLog;
+import com.kaimenshenghuo.crm.common.log.annotation.SysLog;
 import com.kaimenshenghuo.crm.security.service.UserService;
 
 import io.swagger.annotations.Api;
@@ -46,7 +46,7 @@ public class UserController {
 	
 	@GetMapping("/hello")
 	@ApiOperation(value = "测试!", notes = "测试!")
-	@MyLog(value = "进入hello")  //这里添加了AOP的自定义注解
+	@SysLog(value = "进入hello")  //这里添加了AOP的自定义注解
 	public String hello() {
 		System.out.println("hello");
 		return "111111";
@@ -54,7 +54,7 @@ public class UserController {
 	
 	@PostMapping("/login")
 	@ApiOperation(value = "登录!", notes = "登录!")
-	@MyLog(value = "用户登录")  //这里添加了AOP的自定义注解
+	@SysLog(value = "用户登录")  //这里添加了AOP的自定义注解
 	public User login(@RequestBody User user) {
 		System.out.println("登录");
 		return userService.login(user);

@@ -21,7 +21,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.alibaba.fastjson.JSON;
 import com.kaimenshenghuo.crm.common.data.domain.Syslog;
-import com.kaimenshenghuo.crm.common.log.aspect.MyLog;
+import com.kaimenshenghuo.crm.common.log.annotation.SysLog;
 import com.kaimenshenghuo.crm.security.service.SyslogService;
 import com.kaimenshenghuo.crm.security.util.IpUtil;
 
@@ -51,7 +51,7 @@ public class SysLogAspect {
         Method method = signature.getMethod();
  
         //获取操作
-        MyLog myLog = method.getAnnotation(MyLog.class);
+        SysLog myLog = method.getAnnotation(SysLog.class);
         if (myLog != null) {
             String value = myLog.value();
             sysLog.setOperation(value);//保存获取的操作

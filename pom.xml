@@ -226,17 +226,6 @@
             <artifactId>hutool-core</artifactId>
             <version>4.1.14</version>
         </dependency>
-		<!-- mybatis plus 代码生成器依赖 -->
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-generator</artifactId>
-			<version>3.2.0</version>
-		</dependency>
-		<!-- 代码生成器模板 -->
-		<dependency>
-			<groupId>org.freemarker</groupId>
-			<artifactId>freemarker</artifactId>
-		</dependency>
 		<!-- 用于读取配置文件注解@ConfigurationProperties-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
