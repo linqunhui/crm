@@ -19,6 +19,7 @@
     <module>crm-upm</module>
     <module>crm-service</module>
     <module>crm-security</module>
+    <module>crm-codegen</module>
   </modules>
   
   <properties>
