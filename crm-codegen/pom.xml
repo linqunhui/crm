@@ -17,6 +17,16 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+	        <exclusions>
+	        	<exclusion>
+	        		<groupId>org.springframework.cloud</groupId>
+	        		<artifactId>spring-cloud-starter</artifactId>
+	        	</exclusion>
+	        </exclusions>
+        </dependency>
 		<!-- mybatis plus 代码生成器依赖 -->
 		<dependency>
 			<groupId>com.baomidou</groupId>

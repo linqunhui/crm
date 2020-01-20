@@ -1,0 +1,32 @@
+nacos:
+  cmdb:
+    dumpTaskInterval: 3600
+    eventTaskInterval: 10
+    labelTaskInterval: 300
+    loadDataAtStart: false
+  security: # 删除此配置无需登录验证
+    ignore:
+      urls: /,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-fe/public/**,/v1/auth/login,/v1/console/health/**,/v1/cs/**,/v1/ns/**,/v1/cmdb/**,/actuator/**,/v1/console/server/**
+
+db:
+  num: 1
+  user: root
+  password: 123456
+  url:
+    0: jdbc:mysql://localhost:3306/nacos_config?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    # 使用druid连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/nacos_config?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    platform: mysql
+  security:
+    enabled: true
+
+server:
+  tomcat:
+    basedir: logs

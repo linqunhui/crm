@@ -12,7 +12,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.kaimenshenghuo.crm.common.data.domain.Syslog;
 
 import cn.hutool.core.util.URLUtil;
-import io.netty.handler.codec.http.HttpUtil;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass

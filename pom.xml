@@ -20,6 +20,7 @@
     <module>crm-service</module>
     <module>crm-security</module>
     <module>crm-codegen</module>
+    <module>crm-nacos</module>
   </modules>
   
   <properties>
@@ -32,13 +33,13 @@
         <poi.version>4.1.1</poi.version>
         <mybatis-plus.version>3.2.0</mybatis-plus.version>
         <pagehelper.version>4.1.6</pagehelper.version>
-        <mysql.version>5.1.6</mysql.version>
+        <mysql.version>5.1.48</mysql.version>
         <commons-lang3>3.9</commons-lang3>
         <fastjson>1.2.62</fastjson>
         <commons-beanutils>1.9.3</commons-beanutils>
         <!-- <swagger2>2.9.2</swagger2> -->
         <swagger2>3.0.0-SNAPSHOT</swagger2>
-        <jjwt>0.9.0</jjwt>
+        <jjwt>0.9.1</jjwt>
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
     </properties>
     
@@ -63,11 +64,27 @@
 	
 	<dependencies>
 		<!-- jwt依赖 -->
-        <dependency>
+        <!-- <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
             <version>${jjwt}</version>
-        </dependency> 
+        </dependency> -->
+        
+        <dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.10.7</version>
+		</dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.10.7</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.10.7</version>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-quartz</artifactId>
@@ -110,10 +127,6 @@
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>javax.servlet-api</artifactId>
 		    <scope>provided</scope>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-gateway</artifactId>
 		</dependency>
 		<dependency>
             <groupId>org.springframework.boot</groupId>
@@ -211,11 +224,11 @@
         </dependency>
         <!-- poi end -->
 		<!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
-		<dependency>
+		<!-- <dependency>
 		    <groupId>com.baomidou</groupId>
 		    <artifactId>mybatis-plus-boot-starter</artifactId>
 		    <version>${mybatis-plus.version}</version>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -232,16 +245,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-	        <groupId>org.springframework.cloud</groupId>
-	        <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-	        <exclusions>
-	        	<exclusion>
-	        		<groupId>org.springframework.cloud</groupId>
-	        		<artifactId>spring-cloud-starter</artifactId>
-	        	</exclusion>
-	        </exclusions>
         </dependency>
 	    <!-- <dependency>
 		    <groupId>org.springframework.cloud</groupId>
