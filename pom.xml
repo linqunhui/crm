@@ -33,7 +33,7 @@
         <poi.version>4.1.1</poi.version>
         <mybatis-plus.version>3.2.0</mybatis-plus.version>
         <pagehelper.version>4.1.6</pagehelper.version>
-        <mysql.version>5.1.48</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <commons-lang3>3.9</commons-lang3>
         <fastjson>1.2.62</fastjson>
         <commons-beanutils>1.9.3</commons-beanutils>
