@@ -35,7 +35,7 @@
         <pagehelper.version>4.1.6</pagehelper.version>
         <mysql.version>8.0.16</mysql.version>
         <commons-lang3>3.9</commons-lang3>
-        <fastjson>1.2.62</fastjson>
+        <fastjson>1.2.83</fastjson>
         <commons-beanutils>1.9.4</commons-beanutils>
         <!-- <swagger2>2.9.2</swagger2> -->
         <swagger2>3.0.0-SNAPSHOT</swagger2>
